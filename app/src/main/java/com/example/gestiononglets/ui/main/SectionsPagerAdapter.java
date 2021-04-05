@@ -31,14 +31,16 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position) {
             case 0:
-                return NatureFragment.newInstance(0, mContext.getString(R.string.titre_section0));
+                return SeasonsFragment.newInstance(0, mContext.getString(R.string.titre_section0));
             case 1:
-                return NatureFragment.newInstance(1, mContext.getString(R.string.titre_section1));
+                return SeasonsFragment.newInstance(1, mContext.getString(R.string.titre_section1));
             case 2:
-                return NatureFragment.newInstance(2, mContext.getString(R.string.titre_section2));
+                return SeasonsFragment.newInstance(2, mContext.getString(R.string.titre_section2));
         }
         return null;
     }
+
+
 
 
     @Nullable
