@@ -9,10 +9,12 @@ import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.gestiononglets.MainActivity;
 import com.example.gestiononglets.R;
 
 import java.util.Locale;
@@ -58,11 +60,62 @@ public class SeasonsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-        TextView tvLabel = (TextView) view.findViewById(R.id.section_label);
-        tvLabel.setText(page + " -- " + title);
+        if(title.equals("Saisons")){
 
-        return view;
+            View view = inflater.inflate(R.layout.fragment_saisons, container, false);
+            ImageView imageHiver = (ImageView) view.findViewById(R.id.imageView1);
+            ImageView imagePrintemps= (ImageView) view.findViewById(R.id.imageView2);
+            ImageView imageEte= (ImageView) view.findViewById(R.id.imageView3);
+            ImageView imageAutomne= (ImageView) view.findViewById(R.id.imageView4);
+
+            imageHiver.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // your code here
+                    MainActivity a = (MainActivity) getActivity();
+                    a.viewPager.setCurrentItem(0);
+                }
+            });
+            imagePrintemps.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // your code here
+                    MainActivity a = (MainActivity) getActivity();
+                    a.viewPager.setCurrentItem(1);
+                }
+            });
+            imageEte.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // your code here
+                    MainActivity a = (MainActivity) getActivity();
+                    a.viewPager.setCurrentItem(2);
+                }
+            });
+            imageAutomne.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // your code here
+                    MainActivity a = (MainActivity) getActivity();
+                    a.viewPager.setCurrentItem(3);
+                }
+            });
+
+
+            imageHiver.setImageResource(SectionsPagerAdapter.getImage("hiver"));
+            imagePrintemps.setImageResource(SectionsPagerAdapter.getImage("printemps"));
+            imageEte.setImageResource(SectionsPagerAdapter.getImage("été"));
+            imageAutomne.setImageResource(SectionsPagerAdapter.getImage("automne"));
+            return view;
+
+
+        }
+        else {
+            View view = inflater.inflate(R.layout.fragment_main, container, false);
+            TextView tvLabel = (TextView) view.findViewById(R.id.section_label);
+            tvLabel.setText(page + " -- " + title);
+            ImageView image;
+            image = (ImageView) view.findViewById(R.id.imageView);
+            image.setImageResource(SectionsPagerAdapter.getImage(title));
+            return view;
+        }
+
     }
 
 
@@ -72,16 +125,20 @@ public class SeasonsFragment extends Fragment {
         Drawable icone=null;
         switch (position) {
             case 0:
-                titre = mContext.getString(R.string.titre_section0).toUpperCase(l);
-                icone = mContext.getResources().getDrawable(R.drawable.mineral);
+                titre = mContext.getString(R.string.titre_section4).toUpperCase(l);
+                icone = mContext.getResources().getDrawable(R.drawable.winter);
                 break;
             case 1:
-                titre = mContext.getString(R.string.titre_section1).toUpperCase(l);
-                icone = mContext.getResources().getDrawable(R.drawable.vegetal);
+                titre = mContext.getString(R.string.titre_section5).toUpperCase(l);
+                icone = mContext.getResources().getDrawable(R.drawable.spring);
                 break;
             case 2:
-                titre = mContext.getString(R.string.titre_section2).toUpperCase(l);
-                icone = mContext.getResources().getDrawable(R.drawable.animal);
+                titre = mContext.getString(R.string.titre_section6).toUpperCase(l);
+                icone = mContext.getResources().getDrawable(R.drawable.summer);
+                break;
+            case 3:
+                titre = mContext.getString(R.string.titre_section7).toUpperCase(l);
+                icone = mContext.getResources().getDrawable(R.drawable.autumn);
                 break;
         }
         SpannableString sb = new SpannableString(" " + titre);

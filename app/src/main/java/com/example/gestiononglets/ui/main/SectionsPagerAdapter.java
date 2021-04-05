@@ -25,17 +25,29 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         mContext = context;
     }
 
+    public static int getImage(String s){
+        if(s.equals("Hiver"))     return R.drawable.winter;
+        if(s.equals("Printemps")) return R.drawable.spring;
+        if(s.equals("Eté"))       return R.drawable.summer;
+        if(s.equals("Automne"))   return R.drawable.autumn;
+        return 0;
+    }
+
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position) {
             case 0:
-                return SeasonsFragment.newInstance(0, mContext.getString(R.string.titre_section0));
+                return SeasonsFragment.newInstance(0, mContext.getString(R.string.titre_section4));
             case 1:
-                return SeasonsFragment.newInstance(1, mContext.getString(R.string.titre_section1));
+                return SeasonsFragment.newInstance(1, mContext.getString(R.string.titre_section5));
             case 2:
-                return SeasonsFragment.newInstance(2, mContext.getString(R.string.titre_section2));
+                return SeasonsFragment.newInstance(2, mContext.getString(R.string.titre_section5));
+            case 3:
+                return SeasonsFragment.newInstance(2, mContext.getString(R.string.titre_section6));
+            case 4:
+                return SeasonsFragment.newInstance(2, mContext.getString(R.string.titre_section7));
         }
         return null;
     }
